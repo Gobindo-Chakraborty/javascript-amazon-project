@@ -73,6 +73,8 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
 
 export let products = [];
 
+// backend request using callback
+
 export function loadCart(fun) {
   const xhr = new XMLHttpRequest();
 

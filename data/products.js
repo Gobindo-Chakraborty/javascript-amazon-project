@@ -90,6 +90,8 @@ object3.method();
 
 export let products = [];
 
+// backend request using 'fetch' which makes promises
+
 export function loadProductsFetch() {
   const promise = fetch("https://supersimplebackend.dev/products")
     .then((response) => {

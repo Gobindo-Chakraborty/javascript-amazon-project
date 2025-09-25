@@ -6,6 +6,24 @@ import { loadCart } from "../data/cart.js";
 // import "../data/cart-class.js";
 import "../data/backend-practice.js";
 
+async function loadPage() {
+  // loadProductFetch() made by promises
+  await loadProductsFetch();
+
+  // loadCart() made by callbacks
+  // So we need to use new Promise()
+  const value = await new Promise((resolve) => {
+    loadCart(() => {});
+    resolve("value3");
+  });
+
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+
+loadPage();
+
+/*
 Promise.all([
   loadProductsFetch(),
   new Promise((resolve) => {
@@ -18,6 +36,7 @@ Promise.all([
   renderOrderSummary();
   renderPaymentSummary();
 });
+*/
 
 /*
 new Promise((resolve) => {
