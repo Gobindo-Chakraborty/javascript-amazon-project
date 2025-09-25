@@ -7,15 +7,25 @@ import { loadCart } from "../data/cart.js";
 import "../data/backend-practice.js";
 
 async function loadPage() {
-  // loadProductFetch() made by promises
-  await loadProductsFetch();
+  try {
+    // throw "error1";
 
-  // loadCart() made by callbacks
-  // So we need to use new Promise()
-  const value = await new Promise((resolve) => {
-    loadCart(() => {});
-    resolve("value3");
-  });
+    // loadProductFetch() made by promises
+    await loadProductsFetch();
+
+    // loadCart() made by callbacks
+    // So we need to use new Promise()
+    const value = await new Promise((resolve, reject) => {
+      // throw "error2";
+      loadCart(() => {
+        // reject("error3");
+        resolve("value3");
+      });
+    });
+  } catch (error) {
+    console.log("Unexpected error. Please try again later.");
+    console.log(error);
+  }
 
   renderOrderSummary();
   renderPaymentSummary();
