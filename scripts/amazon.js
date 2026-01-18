@@ -70,6 +70,7 @@ function updateCartQuantity() {
 
   document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
 }
+updateCartQuantity();
 
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
