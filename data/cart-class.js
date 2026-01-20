@@ -25,11 +25,9 @@ class Cart {
       ];
     }
   }
-
   saveToStorage() {
     localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
   }
-
   addToCart(productId) {
     let matchingItem;
 
@@ -50,7 +48,6 @@ class Cart {
     }
     this.saveToStorage();
   }
-
   removeFromCart(productId) {
     const newCart = [];
 
@@ -59,10 +56,10 @@ class Cart {
         newCart.push(cartItem);
       }
     });
+
     this.cartItems = newCart;
     this.saveToStorage();
   }
-
   updateDeliveryOption(productId, deliveryOptionId) {
     let matchingItem;
 
@@ -82,4 +79,5 @@ const businessCart = new Cart("cart-business");
 
 console.log(cart);
 console.log(businessCart);
+
 console.log(businessCart instanceof Cart);

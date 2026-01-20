@@ -48,7 +48,6 @@ export function addToCart(productId) {
 
 export function removeFromCart(productId) {
   const newCart = [];
-
   cart.forEach((cartItem) => {
     if (cartItem.productId !== productId) {
       newCart.push(cartItem);
@@ -71,18 +70,12 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
   saveToStorage();
 }
 
-export let products = [];
-
-// backend request using callback
-
 export function loadCart(fun) {
   const xhr = new XMLHttpRequest();
-
   xhr.addEventListener("load", () => {
     console.log(xhr.response);
     fun();
   });
-
   xhr.open("GET", "https://supersimplebackend.dev/cart");
   xhr.send();
 }

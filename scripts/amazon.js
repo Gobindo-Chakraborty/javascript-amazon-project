@@ -5,11 +5,11 @@ import { formatCurrency } from "./utils/money.js";
 loadProducts(renderProductsGrid);
 
 function renderProductsGrid() {
-  let productsHTML = "";
+  let productsHTML = ``;
 
   products.forEach((product) => {
-    productsHTML += `
-        <div class="product-container">
+    const html = `
+         <div class="product-container">
           <div class="product-image-container">
             <img
               class="product-image"
@@ -61,10 +61,9 @@ function renderProductsGrid() {
             product.id
           }">Add to Cart</button>
         </div>
-  `;
+ `;
+    productsHTML += html;
   });
-
-  document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
   function updateCartQuantity() {
     let cartQuantity = 0;
@@ -74,16 +73,17 @@ function renderProductsGrid() {
     });
 
     document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
-
-    console.log(cart);
-    console.log(cartQuantity);
   }
+  updateCartQuantity();
+
+  document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
   document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     button.addEventListener("click", () => {
       const productId = button.dataset.productId;
 
       addToCart(productId);
+
       updateCartQuantity();
     });
   });

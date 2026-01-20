@@ -54,6 +54,7 @@ function Cart(localStorageKey) {
           newCart.push(cartItem);
         }
       });
+
       this.cartItems = newCart;
       this.saveToStorage();
     },
@@ -71,7 +72,6 @@ function Cart(localStorageKey) {
       this.saveToStorage();
     },
   };
-
   return cart;
 }
 
